@@ -88,7 +88,7 @@
   </g>
   <g id="TEXTO">
     <g>
-      {% if s2Line1 %}<text class="cls-3" transform="translate(222.42 683.41)"><tspan x="0" y="0">{{s2Line1}}</tspan></text>{% endif %}
+      {% if s2Line1 %}<text class="cls-3" transform="translate(219.48 683.41)"><tspan x="0" y="0">{{s2Line1}}</tspan></text>{% endif %}
       {% if s2Line2 %}<text class="cls-3" transform="translate(222.42 725.43)"><tspan x="0" y="0">{{s2Line2}}</tspan></text>{% endif %}
       {% if s2Line3 %}<text class="cls-3" transform="translate(222.42 767.68)"><tspan x="0" y="0">{{s2Line3}}</tspan></text>{% endif %}
       {% if s2Line4 %}<text class="cls-3" transform="translate(222.42 809.68)"><tspan x="0" y="0">{{s2Line4}}</tspan></text>{% endif %}
