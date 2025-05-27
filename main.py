@@ -1,8 +1,10 @@
-from flask import Flask, request, send_file, jsonify
+from flask import Flask, request, send_file, jsonify, url_for
 from jinja2 import Environment, FileSystemLoader
 import os
 import cairosvg
 import tempfile
+from PIL import Image
+import io
 
 app = Flask(__name__)
 
@@ -71,14 +73,31 @@ def generate():
 
             rendered_svg = template.render(data_for_render)
 
-            output_filename = f"{os.path.splitext(template_file_name)[0]}.png"
+            output_filename = f"{os.path.splitext(template_file_name)[0]}.jpg"
             output_path = os.path.join(tempfile.gettempdir(), output_filename)
 
-            cairosvg.svg2png(
+            # Convert SVG to PNG in memory first
+            png_data = cairosvg.svg2png(
                 bytestring=rendered_svg.encode("utf-8"),
-                write_to=output_path,
                 dpi=300
             )
+            
+            # Convert PNG to JPG using PIL
+            png_image = Image.open(io.BytesIO(png_data))
+            # Convert to RGB if it has transparency (RGBA)
+            if png_image.mode in ('RGBA', 'LA'):
+                # Create a white background
+                rgb_image = Image.new('RGB', png_image.size, (255, 255, 255))
+                if png_image.mode == 'RGBA':
+                    rgb_image.paste(png_image, mask=png_image.split()[-1])  # Use alpha channel as mask
+                else:
+                    rgb_image.paste(png_image)
+                png_image = rgb_image
+            elif png_image.mode != 'RGB':
+                png_image = png_image.convert('RGB')
+            
+            # Save as JPG
+            png_image.save(output_path, 'JPEG', quality=95)
 
             output_files.append({
                 "name": output_filename,
@@ -95,6 +114,34 @@ def download(filename):
     file_path = os.path.join(tempfile.gettempdir(), filename)
     if os.path.exists(file_path):
         return send_file(file_path, as_attachment=True)
+    return jsonify({"error": "Archivo no encontrado"}), 404
+
+@app.route("/get-public-url/<filename>", methods=["GET"])
+def get_public_url(filename):
+    """
+    Returns a public URL for downloading the image instead of serving the file directly.
+    This endpoint provides a JSON response with the public URL.
+    """
+    file_path = os.path.join(tempfile.gettempdir(), filename)
+    if os.path.exists(file_path):
+        # Generate the public URL using url_for
+        public_url = url_for('serve_image', filename=filename, _external=True)
+        return jsonify({
+            "filename": filename,
+            "public_url": public_url,
+            "status": "available"
+        }), 200
+    return jsonify({"error": "Archivo no encontrado"}), 404
+
+@app.route("/serve/<filename>", methods=["GET"])
+def serve_image(filename):
+    """
+    Serves the image file directly (used by the public URL).
+    This endpoint serves the file without forcing download.
+    """
+    file_path = os.path.join(tempfile.gettempdir(), filename)
+    if os.path.exists(file_path):
+        return send_file(file_path, mimetype='image/jpeg')
     return jsonify({"error": "Archivo no encontrado"}), 404
 
 @app.route("/health", methods=["GET"])
