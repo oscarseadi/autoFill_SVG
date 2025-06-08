@@ -66,7 +66,7 @@
       <rect class="cls-8" x="-405.97" y="860.45" width="385.97" height="264.55"/>
     </clipPath>
     <clipPath id="clippath-1">
-      <rect class="cls-8" x="515.21" y="860.45" width="385.97" height="264.55"/>
+      <rect class="cls-8" x="514.03" y="860.45" width="385.97" height="264.55"/>
     </clipPath>
     <clipPath id="clippath-2">
       <rect class="cls-6" x="752.4" y="1013.21" width="43.5" height="43.5"/>
@@ -77,17 +77,18 @@
   </g>
   <g id="TEXTO">
     <g>
-      {% if s3Line1 %}<text class="cls-1" transform="translate(223.59 683.41)"><tspan x="0" y="0">{{s3Line1}}</tspan></text>{% endif %}
-      {% if s3Line2 %}<text class="cls-1" transform="translate(223.59 725.43)"><tspan x="0" y="0">{{s3Line2}}</tspan></text>{% endif %}
-      {% if s3Line3 %}<text class="cls-1" transform="translate(223.59 767.68)"><tspan x="0" y="0">{{s3Line3}}</tspan></text>{% endif %}
-      {% if s3Line4 %}<text class="cls-1" transform="translate(223.59 809.68)"><tspan x="0" y="0">{{s3Line4}}</tspan></text>{% endif %}
+      {% if s3Line1 %}<text class="cls-1" transform="translate(223.59 655.00)"><tspan x="0" y="0">{{s3Line1}}</tspan></text>{% endif %}
+      {% if s3Line2 %}<text class="cls-1" transform="translate(223.59 700.00)"><tspan x="0" y="0">{{s3Line2}}</tspan></text>{% endif %}
+      {% if s3Line3 %}<text class="cls-1" transform="translate(223.59 745.00)"><tspan x="0" y="0">{{s3Line3}}</tspan></text>{% endif %}
+      {% if s3Line4 %}<text class="cls-1" transform="translate(223.59 790.00)"><tspan x="0" y="0">{{s3Line4}}</tspan></text>{% endif %}
+      {% if s3Line5 %}<text class="cls-1" transform="translate(223.59 835.00)"><tspan x="0" y="0">{{s3Line5}}</tspan></text>{% endif %}
     </g>
     <text class="cls-3" transform="translate(96.65 114)"><tspan x="0" y="0">Rebound</tspan></text>
-    <text class="cls-4" transform="translate(96.54 759.12)"><tspan x="0" y="0">03</tspan></text>
-    {% if title3L1 %}<text class="cls-5" transform="translate(169.06 341.06)"><tspan x="0" y="0">{{title3L1}}</tspan></text>{% endif %}
-    {% if title3L2 %}<text class="cls-5" transform="translate(169.06 429.69)"><tspan x="0" y="0">{{title3L2}}</tspan></text>{% endif %}
-    {% if title3L3 %}<text class="cls-5" transform="translate(169.06 518.32)"><tspan x="0" y="0">{{title3L3}}</tspan></text>{% endif %}
-    {% if title3L4 %}<text class="cls-5" transform="translate(169.06 606.95)"><tspan x="0" y="0">{{title3L4}}</tspan></text>{% endif %}
+    <text class="cls-4" transform="translate(96.54 760.00)"><tspan x="0" y="0">03</tspan></text>
+    {% if title3L1 %}<text class="cls-5" transform="translate(169.06 270.00)"><tspan x="0" y="0">{{title3L1}}</tspan></text>{% endif %}
+    {% if title3L2 %}<text class="cls-5" transform="translate(169.06 360.00)"><tspan x="0" y="0">{{title3L2}}</tspan></text>{% endif %}
+    {% if title3L3 %}<text class="cls-5" transform="translate(169.06 450.00)"><tspan x="0" y="0">{{title3L3}}</tspan></text>{% endif %}
+    {% if title3L4 %}<text class="cls-5" transform="translate(169.06 540.00)"><tspan x="0" y="0">{{title3L4}}</tspan></text>{% endif %}
   </g>
   <g id="MISC">
      <g class="cls-9">

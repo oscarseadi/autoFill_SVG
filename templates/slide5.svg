@@ -75,19 +75,20 @@
   <g id="BACKGROUND">
     <rect width="900" height="1125"/>
   </g>
-  <g id="TEXTO">
+ <g id="TEXTO">
     <g>
-      {% if s5Line1 %}<text class="cls-1" transform="translate(222.42 683.41)"><tspan x="0" y="0">{{s5Line1}}</tspan></text>{% endif %}
-      {% if s5Line2 %}<text class="cls-1" transform="translate(222.42 725.43)"><tspan x="0" y="0">{{s5Line2}}</tspan></text>{% endif %}
-      {% if s5Line3 %}<text class="cls-1" transform="translate(222.42 767.68)"><tspan x="0" y="0">{{s5Line3}}</tspan></text>{% endif %}
-      {% if s5Line4 %}<text class="cls-1" transform="translate(222.42 809.68)"><tspan x="0" y="0">{{s5Line4}}</tspan></text>{% endif %}
+      {% if s5Line1 %}<text class="cls-1" transform="translate(222.42 655.00)"><tspan x="0" y="0">{{s5Line1}}</tspan></text>{% endif %}
+      {% if s5Line2 %}<text class="cls-1" transform="translate(222.42 700.00)"><tspan x="0" y="0">{{s5Line2}}</tspan></text>{% endif %}
+      {% if s5Line3 %}<text class="cls-1" transform="translate(222.42 745.00)"><tspan x="0" y="0">{{s5Line3}}</tspan></text>{% endif %}
+      {% if s5Line4 %}<text class="cls-1" transform="translate(222.42 790.00)"><tspan x="0" y="0">{{s5Line4}}</tspan></text>{% endif %}
+      {% if s5Line5 %}<text class="cls-1" transform="translate(222.42 835.00)"><tspan x="0" y="0">{{s5Line5}}</tspan></text>{% endif %}
     </g>
     <text class="cls-3" transform="translate(95.48 114)"><tspan x="0" y="0">Rebound</tspan></text>
-    <text class="cls-4" transform="translate(95.36 759.12)"><tspan x="0" y="0">05</tspan></text>
-    {% if title5L1 %}<text class="cls-5" transform="translate(167.88 338.18)"><tspan x="0" y="0">{{title5L1}}</tspan></text>{% endif %}
-    {% if title5L2 %}<text class="cls-5" transform="translate(167.88 426.81)"><tspan x="0" y="0">{{title5L2}}</tspan></text>{% endif %}
-    {% if title5L3 %}<text class="cls-5" transform="translate(167.88 515.44)"><tspan x="0" y="0">{{title5L3}}</tspan></text>{% endif %}
-    {% if title5L4 %}<text class="cls-5" transform="translate(167.88 604.08)"><tspan x="0" y="0">{{title5L4}}</tspan></text>{% endif %}
+    <text class="cls-4" transform="translate(95.36 760.00)"><tspan x="0" y="0">05</tspan></text>
+    {% if title5L1 %}<text class="cls-5" transform="translate(167.88 270.00)"><tspan x="0" y="0">{{title5L1}}</tspan></text>{% endif %}
+    {% if title5L2 %}<text class="cls-5" transform="translate(167.88 360.00)"><tspan x="0" y="0">{{title5L2}}</tspan></text>{% endif %}
+    {% if title5L3 %}<text class="cls-5" transform="translate(167.88 450.00)"><tspan x="0" y="0">{{title5L3}}</tspan></text>{% endif %}
+    {% if title5L4 %}<text class="cls-5" transform="translate(167.88 540.00)"><tspan x="0" y="0">{{title5L4}}</tspan></text>{% endif %}
   </g>
   <g id="MISC">
     <g class="cls-11">
