@@ -77,11 +77,11 @@
   </g>
   <g id="TEXTO">
     <g>
-      {% if s3Line1 %}<text class="cls-1" transform="translate(223.59 655.00)"><tspan x="0" y="0">{{s3Line1}}</tspan></text>{% endif %}
-      {% if s3Line2 %}<text class="cls-1" transform="translate(223.59 700.00)"><tspan x="0" y="0">{{s3Line2}}</tspan></text>{% endif %}
-      {% if s3Line3 %}<text class="cls-1" transform="translate(223.59 745.00)"><tspan x="0" y="0">{{s3Line3}}</tspan></text>{% endif %}
-      {% if s3Line4 %}<text class="cls-1" transform="translate(223.59 790.00)"><tspan x="0" y="0">{{s3Line4}}</tspan></text>{% endif %}
-      {% if s3Line5 %}<text class="cls-1" transform="translate(223.59 835.00)"><tspan x="0" y="0">{{s3Line5}}</tspan></text>{% endif %}
+      {% if s3Line1 %}<text class="cls-1" transform="translate(223.59 655.00)"><tspan x="0" y="0">• {{s3Line1}}</tspan></text>{% endif %}
+      {% if s3Line2 %}<text class="cls-1" transform="translate(223.59 700.00)"><tspan x="0" y="0">• {{s3Line2}}</tspan></text>{% endif %}
+      {% if s3Line3 %}<text class="cls-1" transform="translate(223.59 745.00)"><tspan x="0" y="0">• {{s3Line3}}</tspan></text>{% endif %}
+      {% if s3Line4 %}<text class="cls-1" transform="translate(223.59 790.00)"><tspan x="0" y="0">• {{s3Line4}}</tspan></text>{% endif %}
+      {% if s3Line5 %}<text class="cls-1" transform="translate(223.59 835.00)"><tspan x="0" y="0">• {{s3Line5}}</tspan></text>{% endif %}
     </g>
     <text class="cls-3" transform="translate(96.65 114)"><tspan x="0" y="0">Rebound</tspan></text>
     <text class="cls-4" transform="translate(96.54 760.00)"><tspan x="0" y="0">03</tspan></text>
