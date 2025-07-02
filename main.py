@@ -5,6 +5,7 @@ import cairosvg
 import tempfile
 from PIL import Image
 import io
+import uuid
 
 app = Flask(__name__)
 
@@ -32,16 +33,39 @@ def generate():
         # Obtenemos el array de slides. El 'cover_title' ya no se extrae ni se pasa.
         json_slides_array = carousel_data.get('slides', [])
 
-        env = Environment(loader=FileSystemLoader("templates"))
+        # Obtener el nombre del set de templates desde el request (POST JSON o query param), default 'rebound'
+        template_set = None
+        if request.is_json:
+            template_set = request.json.get('template')
+        if not template_set:
+            template_set = request.args.get('template', 'rebound')
+        if not template_set:
+            template_set = 'rebound'
+
+        # Path absoluto a la subcarpeta del template set
+        templates_folder = os.path.join('templates', template_set)
+
+        if not os.path.isdir(templates_folder):
+            return jsonify({"error": f"Template set '{template_set}' does not exist."}), 400
+
+        env = Environment(loader=FileSystemLoader(templates_folder))
         output_files = []
 
+        # Crear carpeta temporal única para esta generación
+        unique_id = str(uuid.uuid4())
+        gen_dir = os.path.join(tempfile.gettempdir(), f"gen_{unique_id}")
+        os.makedirs(gen_dir, exist_ok=True)
+
         for i, template_file_name in enumerate(template_names):
-            template = env.get_template(template_file_name)
-            data_for_render = {} # Por defecto, el contexto de datos estará vacío.
+            try:
+                template = env.get_template(template_file_name)
+            except Exception as e:
+                app.logger.error(f"Template '{template_file_name}' not found in set '{template_set}': {e}")
+                return jsonify({"error": f"Template '{template_file_name}' not found in set '{template_set}'"}), 400
+            data_for_render = {}  # Por defecto, el contexto de datos estará vacío.
 
             if template_file_name == "zbackcover.svg":
                 # zbackcover.svg es estático, no necesita datos del JSON.
-                # Se renderizará con un contexto vacío.
                 app.logger.info(f"Rendering '{template_file_name}' as a static template (no dynamic JSON data).")
             elif i < len(json_slides_array):
                 # Para "cover.svg", "slide1.svg", ..., "slide5.svg"
@@ -74,7 +98,7 @@ def generate():
             rendered_svg = template.render(data_for_render)
 
             output_filename = f"{os.path.splitext(template_file_name)[0]}.jpg"
-            output_path = os.path.join(tempfile.gettempdir(), output_filename)
+            output_path = os.path.join(gen_dir, output_filename)
 
             # Convert SVG to PNG in memory first
             png_data = cairosvg.svg2png(
@@ -101,31 +125,36 @@ def generate():
 
             output_files.append({
                 "name": output_filename,
+                "gen_id": unique_id
             })
 
-        return jsonify({"generated": [f["name"] for f in output_files]}), 200
+        return jsonify({
+            "generated": [f["name"] for f in output_files],
+            "gen_id": unique_id
+        }), 200
 
     except Exception as e:
         app.logger.error(f"Error processing /generate request: {str(e)}", exc_info=True)
         return jsonify({"error": f"Error al procesar: {str(e)}"}), 500
 
-@app.route("/download/<filename>", methods=["GET"])
-def download(filename):
-    file_path = os.path.join(tempfile.gettempdir(), filename)
+@app.route("/download/<gen_id>/<filename>", methods=["GET"])
+def download(gen_id, filename):
+    gen_dir = os.path.join(tempfile.gettempdir(), f"gen_{gen_id}")
+    file_path = os.path.join(gen_dir, filename)
     if os.path.exists(file_path):
         return send_file(file_path, as_attachment=True)
     return jsonify({"error": "Archivo no encontrado"}), 404
 
-@app.route("/get-public-url/<filename>", methods=["GET"])
-def get_public_url(filename):
+@app.route("/get-public-url/<gen_id>/<filename>", methods=["GET"])
+def get_public_url(gen_id, filename):
     """
     Returns a public URL for downloading the image instead of serving the file directly.
     This endpoint provides a JSON response with the public URL.
     """
-    file_path = os.path.join(tempfile.gettempdir(), filename)
+    gen_dir = os.path.join(tempfile.gettempdir(), f"gen_{gen_id}")
+    file_path = os.path.join(gen_dir, filename)
     if os.path.exists(file_path):
-        # Generate the public URL using url_for
-        public_url = url_for('serve_image', filename=filename, _external=True)
+        public_url = url_for('serve_image', gen_id=gen_id, filename=filename, _external=True)
         return jsonify({
             "filename": filename,
             "public_url": public_url,
@@ -133,13 +162,14 @@ def get_public_url(filename):
         }), 200
     return jsonify({"error": "Archivo no encontrado"}), 404
 
-@app.route("/serve/<filename>", methods=["GET"])
-def serve_image(filename):
+@app.route("/serve/<gen_id>/<filename>", methods=["GET"])
+def serve_image(gen_id, filename):
     """
     Serves the image file directly (used by the public URL).
     This endpoint serves the file without forcing download.
     """
-    file_path = os.path.join(tempfile.gettempdir(), filename)
+    gen_dir = os.path.join(tempfile.gettempdir(), f"gen_{gen_id}")
+    file_path = os.path.join(gen_dir, filename)
     if os.path.exists(file_path):
         return send_file(file_path, mimetype='image/jpeg')
     return jsonify({"error": "Archivo no encontrado"}), 404
