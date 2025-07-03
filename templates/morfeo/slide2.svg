@@ -25,26 +25,29 @@
         font-size: 80px;
         font-family: 'Poppins', sans-serif;
         font-weight: 400; /* Explicitamente normal para Poppins Regular */
+        fill: #fff;
       }
 
       .cls-2 { /* Poppins Regular */
         font-size: 57.6px;
         font-family: 'Poppins', sans-serif;
         font-weight: 400; /* Explicitamente normal para Poppins Regular */
+        fill: #fff;
       }
 
       .cls-3 { /* Poppins Regular */
         font-size: 28px;
         font-family: 'Poppins', sans-serif;
         font-weight: 400; /* Explicitamente normal para Poppins Regular */
+        fill: #fff;
       }
 
       .cls-4 {
-        fill: #cf0;
+        fill: #034159;
       }
 
       .cls-5 {
-        fill: #fff;
+        fill: #034159;
       }
 
       .cls-6 {
@@ -59,10 +62,12 @@
         font-family: 'Poppins', sans-serif;
         font-size: 26.6px;
         font-weight: 700; /* o 'bold' */
+        fill: #fff;
       }
 
       .cls-9 { /* fill-rule, no es una fuente */
         fill-rule: evenodd;
+        fill: #fff;
       }
 
       .cls-10 { /* Es un clip-path */
@@ -71,6 +76,10 @@
 
       .cls-11 { /* Es un clip-path */
         clip-path: url(#clippath);
+      }
+
+      .cls-icon-bg {
+        fill: #fff;
       }
     </style>
     <clipPath id="clippath">
@@ -94,7 +103,7 @@
       {% if s2Line4 %}<text class="cls-3" transform="translate(222.42 790.00)"><tspan x="0" y="0">• {{s2Line4}}</tspan></text>{% endif %}
       {% if s2Line5 %}<text class="cls-3" transform="translate(222.42 835.00)"><tspan x="0" y="0">• {{s2Line5}}</tspan></text>{% endif %}
     </g>
-    <text class="cls-8" transform="translate(95.48 114)"><tspan x="0" y="0">Rebound</tspan></text>
+    <text class="cls-8" transform="translate(95.48 114)"><tspan x="0" y="0">Morfeo Academy</tspan></text>
     <text class="cls-2" transform="translate(95.36 760.00)"><tspan x="0" y="0">02</tspan></text>
     {% if title2L1 %}<text class="cls-1" transform="translate(167.88 270.00)"><tspan x="0" y="0">{{title2L1}}</tspan></text>{% endif %}
     {% if title2L2 %}<text class="cls-1" transform="translate(167.88 360.00)"><tspan x="0" y="0">{{title2L2}}</tspan></text>{% endif %}
@@ -107,7 +116,7 @@
     </g>
   </g>
   <g id="ICONOS">
-    <rect x="735.97" y="997.96" width="74" height="74" rx="22" ry="22"/>
+    <rect class="cls-icon-bg" x="735.97" y="997.96" width="74" height="74" rx="22" ry="22"/>
     <g class="cls-10">
       <path class="cls-5" d="M794.71,1033.8v2.39c-18.23,5.33-20.2,16.18-20.2,20.6h-2.49c0-4.36,1.64-14.26,15.37-20.55h-36.16v-2.49h36.16c-13.73-6.29-15.37-16.19-15.37-20.55h2.49c0,4.42,1.97,15.27,20.2,20.6Z"/>
     </g>

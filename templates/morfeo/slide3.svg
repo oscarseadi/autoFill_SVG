@@ -24,15 +24,36 @@
         font-size: 28px;
         font-family: 'Poppins', sans-serif;
         font-weight: 400;
+        fill: #fff;
       }
-      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+      .cls-2 {
+        fill-rule: evenodd;
+        fill: #fff;
+      }
+      .cls-3 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 26.6px;
+        font-weight: 700;
+        fill: #fff;
+      }
+      .cls-4 {
+        font-size: 57.6px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 400;
+        fill: #fff;
+      }
+      .cls-5 {
+        font-size: 80px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 400;
         fill: #fff;
       }
       .cls-6 {
-        fill: #cf0;
+        fill: #fff;
       }
-      .cls-2, .cls-7 {
+      .cls-7 {
         fill-rule: evenodd;
+        fill: #fff;
       }
       .cls-8 {
         fill: none;
@@ -40,26 +61,17 @@
       .cls-9 {
         clip-path: url(#clippath-1);
       }
-      .cls-3 {
-        font-family: 'Poppins', sans-serif;
-        font-size: 26.6px;
-        font-weight: 700;
-      }
-      .cls-4 {
-        font-size: 57.6px;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 400;
-      }
       .cls-10 {
         clip-path: url(#clippath-2);
       }
       .cls-11 {
         clip-path: url(#clippath);
       }
-      .cls-5 {
-        font-size: 80px;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 400;
+      .cls-bg {
+        fill: #162D49;
+      }
+      .cls-arrow {
+        fill: #162D49;
       }
     </style>
     <clipPath id="clippath">
@@ -73,7 +85,7 @@
     </clipPath>
   </defs>
   <g id="BACKGROUND">
-    <rect width="900" height="1125"/>
+    <rect class="cls-bg" width="900" height="1125"/>
   </g>
   <g id="TEXTO">
     <g>
@@ -83,7 +95,7 @@
       {% if s3Line4 %}<text class="cls-1" transform="translate(223.59 790.00)"><tspan x="0" y="0">• {{s3Line4}}</tspan></text>{% endif %}
       {% if s3Line5 %}<text class="cls-1" transform="translate(223.59 835.00)"><tspan x="0" y="0">• {{s3Line5}}</tspan></text>{% endif %}
     </g>
-    <text class="cls-3" transform="translate(96.65 114)"><tspan x="0" y="0">Rebound</tspan></text>
+    <text class="cls-3" transform="translate(96.65 114)"><tspan x="0" y="0">Morfeo Academy</tspan></text>
     <text class="cls-4" transform="translate(96.54 760.00)"><tspan x="0" y="0">03</tspan></text>
     {% if title3L1 %}<text class="cls-5" transform="translate(169.06 270.00)"><tspan x="0" y="0">{{title3L1}}</tspan></text>{% endif %}
     {% if title3L2 %}<text class="cls-5" transform="translate(169.06 360.00)"><tspan x="0" y="0">{{title3L2}}</tspan></text>{% endif %}
@@ -100,7 +112,7 @@
     <g>
       <rect class="cls-6" x="752.4" y="1013.21" width="43.5" height="43.5"/>
       <g class="cls-10">
-        <path d="M795.89,1033.8v2.39c-18.23,5.33-20.2,16.18-20.2,20.6h-2.49c0-4.36,1.64-14.26,15.37-20.55h-36.16v-2.49h36.16c-13.73-6.29-15.37-16.19-15.37-20.55h2.49c0,4.42,1.97,15.27,20.2,20.6Z"/>
+        <path class="cls-arrow" d="M795.89,1033.8v2.39c-18.23,5.33-20.2,16.18-20.2,20.6h-2.49c0-4.36,1.64-14.26,15.37-20.55h-36.16v-2.49h36.16c-13.73-6.29-15.37-16.19-15.37-20.55h2.49c0,4.42,1.97,15.27,20.2,20.6Z"/>
       </g>
     </g>
   </g>
